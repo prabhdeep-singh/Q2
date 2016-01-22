@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/modernizr.js"></script>
+    <title> </title>
+    
+    <link rel='stylesheet' href='css/style.css'>
+    
+    </head>
+
+<body>
+    <div id= "notif"></div>
+    <div id="page-wrap">
+    <input id="textInput" type="text" class="textInput"  onKeyUp="checkArray()">
+    <br>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            var regExp = /[0-9\.\,\s-]/;
+            $('#textInput').on('keydown keyup', function(e) {
+                var value = String.fromCharCode(e.which) || e.key;
+                console.log(e);
+                // Only numbers, dots,spaces, hyphens and commas
+                if (!regExp.test(value) && e.which != 188 // ,
+                    && !(e.which === 190 || e.which === 110) // .
+                    && e.which != 32 // space
+                    && !(e.which === 189 || e.which === 109) // -
+                    && e.which != 8 // backspace
+                    && e.which != 46 // delete
+                    && !(e.which >= 37 // arrow keys
+                        && e.which <= 40) && !(e.which >= 96 && e.which <= 105)) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        });
+    </script>
+    <script src="js/checkArray.js"></script>
+
+</body>
+
+
+
+</html>
